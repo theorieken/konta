@@ -1,0 +1,69 @@
+name: Konta
+options:
+  bundleIdPrefix: de.konta
+  deploymentTarget:
+    macOS: '26.0'
+configFiles:
+  Debug: ../ios/Config/Shared.xcconfig
+  Release: ../ios/Config/Shared.xcconfig
+packages:
+  KontaKit:
+    path: ../ios/KontaKit
+targets:
+  Konta:
+    type: application
+    platform: macOS
+    sources:
+      - Konta
+      - path: ../ios/Konta/Assets.xcassets
+      - path: ../ios/Konta/PrivacyInfo.xcprivacy
+    dependencies:
+      - package: KontaKit
+    settings:
+      base:
+        PRODUCT_NAME: Konta
+        ENABLE_HARDENED_RUNTIME: true
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+      configs:
+        Debug:
+          CODE_SIGN_ENTITLEMENTS: Konta/Debug.entitlements
+        Release:
+          CODE_SIGN_ENTITLEMENTS: Konta/Release.entitlements
+    info:
+      path: Konta/Info.plist
+      properties:
+        CFBundleDisplayName: Konta
+        CFBundleDevelopmentRegion: de
+        CFBundleLocalizations: [de]
+        LSApplicationCategoryType: public.app-category.finance
+        ITSAppUsesNonExemptEncryption: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        KontaAPIURL: $(KONTA_API_URL)
+        CFBundleURLTypes:
+          - CFBundleURLName: Konta Einladungen
+            CFBundleURLSchemes: [konta]
+  KontaUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources: [KontaUITests]
+    dependencies:
+      - target: Konta
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        PRODUCT_BUNDLE_IDENTIFIER: de.konta.app.macos.uitests
+        SWIFT_VERSION: 6.0
+schemes:
+  Konta:
+    build:
+      targets:
+        Konta: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [KontaUITests]
+    archive:
+      config: Release

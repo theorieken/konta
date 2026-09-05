@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23DF3BCD5CD08B140CA84047 /* KontaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8E5E8294309364DC6623D3F9 /* KontaKit */; };
+		248A8779ABA4EC99132AE433 /* KontaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612185CD9F81E6603A67001D /* KontaUITests.swift */; };
+		4E3034BD696103354DF481DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E66CEF38BEBB41DD9B24698 /* Assets.xcassets */; };
+		751F82A0A42DB738DF398A5F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A9A3F8B541D6B7105BF26BBC /* PrivacyInfo.xcprivacy */; };
+		906A0F6DEC5ACB8E076FF1A3 /* KontaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26449B72BCFCBE0FA1A0695 /* KontaApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5839B90E43572C6E73C54EA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B838CF9E4157274E7E4B1354 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 013F332F8708A57E062A8DBC;
+			remoteInfo = Konta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		115431D365CFAD69145F389E /* Konta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		612185CD9F81E6603A67001D /* KontaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KontaUITests.swift; sourceTree = "<group>"; };
+		6C30FBB3FBCFFA709C1297B5 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		7090F4982CF6A279874A1F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		78C642F6B8BF03EB59B20F4D /* Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Release.entitlements; sourceTree = "<group>"; };
+		7E66CEF38BEBB41DD9B24698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80B28B7173CA21FF892EBEA6 /* KontaKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KontaKit; path = ../ios/KontaKit; sourceTree = SOURCE_ROOT; };
+		85CA737DA169F23BD8F9771E /* KontaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KontaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9A3F8B541D6B7105BF26BBC /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C26449B72BCFCBE0FA1A0695 /* KontaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KontaApp.swift; sourceTree = "<group>"; };
+		EE2364487A874E21333ABBFE /* Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Debug.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7762CC0BEE5B1187401DE02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23DF3BCD5CD08B140CA84047 /* KontaKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1840F75345B85AF5EB64F240 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6C30FBB3FBCFFA709C1297B5 /* Shared.xcconfig */,
+			);
+			name = Config;
+			path = ../ios/Config;
+			sourceTree = "<group>";
+		};
+		34E7AB70DEF0037511D890DE = {
+			isa = PBXGroup;
+			children = (
+				1840F75345B85AF5EB64F240 /* Config */,
+				B715AF09F1F8C871F559D8E2 /* Konta */,
+				9BBA62AB0AC045D8E75E0CE3 /* Konta */,
+				A2F57F05EBDEEA4DECCEFE60 /* KontaUITests */,
+				ABC65F17225B66DEE0C66FA5 /* Packages */,
+				C2410BC6B8F991F5D31FC2C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9BBA62AB0AC045D8E75E0CE3 /* Konta */ = {
+			isa = PBXGroup;
+			children = (
+				7E66CEF38BEBB41DD9B24698 /* Assets.xcassets */,
+				A9A3F8B541D6B7105BF26BBC /* PrivacyInfo.xcprivacy */,
+			);
+			name = Konta;
+			path = ../ios/Konta;
+			sourceTree = "<group>";
+		};
+		A2F57F05EBDEEA4DECCEFE60 /* KontaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				612185CD9F81E6603A67001D /* KontaUITests.swift */,
+			);
+			path = KontaUITests;
+			sourceTree = "<group>";
+		};
+		ABC65F17225B66DEE0C66FA5 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				80B28B7173CA21FF892EBEA6 /* KontaKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		B715AF09F1F8C871F559D8E2 /* Konta */ = {
+			isa = PBXGroup;
+			children = (
+				EE2364487A874E21333ABBFE /* Debug.entitlements */,
+				7090F4982CF6A279874A1F8E /* Info.plist */,
+				C26449B72BCFCBE0FA1A0695 /* KontaApp.swift */,
+				78C642F6B8BF03EB59B20F4D /* Release.entitlements */,
+			);
+			path = Konta;
+			sourceTree = "<group>";
+		};
+		C2410BC6B8F991F5D31FC2C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				115431D365CFAD69145F389E /* Konta.app */,
+				85CA737DA169F23BD8F9771E /* KontaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		013F332F8708A57E062A8DBC /* Konta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71CF606FC66DF722C9754FD3 /* Build configuration list for PBXNativeTarget "Konta" */;
+			buildPhases = (
+				54A04FA397BE26215191A232 /* Sources */,
+				BE8A510E7AE8F6F20EC48A29 /* Resources */,
+				A7762CC0BEE5B1187401DE02 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Konta;
+			packageProductDependencies = (
+				8E5E8294309364DC6623D3F9 /* KontaKit */,
+			);
+			productName = Konta;
+			productReference = 115431D365CFAD69145F389E /* Konta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		47A7FBA602D86475566B45A3 /* KontaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9730DA076295E942571B82E0 /* Build configuration list for PBXNativeTarget "KontaUITests" */;
+			buildPhases = (
+				1ACD413C7696F84A9BC5BC95 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1533E94180A2AAE180201870 /* PBXTargetDependency */,
+			);
+			name = KontaUITests;
+			packageProductDependencies = (
+			);
+			productName = KontaUITests;
+			productReference = 85CA737DA169F23BD8F9771E /* KontaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B838CF9E4157274E7E4B1354 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					013F332F8708A57E062A8DBC = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					47A7FBA602D86475566B45A3 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 013F332F8708A57E062A8DBC;
+					};
+				};
+			};
+			buildConfigurationList = B1F2F708A71315E53493CA82 /* Build configuration list for PBXProject "Konta" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 34E7AB70DEF0037511D890DE;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8BABDC2BC4537064A3E4B2AD /* XCLocalSwiftPackageReference "../ios/KontaKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C2410BC6B8F991F5D31FC2C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				013F332F8708A57E062A8DBC /* Konta */,
+				47A7FBA602D86475566B45A3 /* KontaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE8A510E7AE8F6F20EC48A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E3034BD696103354DF481DE /* Assets.xcassets in Resources */,
+				751F82A0A42DB738DF398A5F /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1ACD413C7696F84A9BC5BC95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				248A8779ABA4EC99132AE433 /* KontaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54A04FA397BE26215191A232 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				906A0F6DEC5ACB8E076FF1A3 /* KontaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1533E94180A2AAE180201870 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 013F332F8708A57E062A8DBC /* Konta */;
+			targetProxy = 5839B90E43572C6E73C54EA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		24F760FD23C30B494E82D653 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Konta/Release.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Konta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_NAME = Konta;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2864E76FF83F0C7551ECC692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C30FBB3FBCFFA709C1297B5 /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		402C2E0DC81CC0C6998C6962 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.konta.app.macos.uitests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_TARGET_NAME = Konta;
+			};
+			name = Release;
+		};
+		A277869BA6DE1E43DFFDFE57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Konta/Debug.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Konta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_NAME = Konta;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B6F4F49B1566378EF71E3CBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C30FBB3FBCFFA709C1297B5 /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		FD0C70BFCA72DA9392A6508F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.konta.app.macos.uitests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_TARGET_NAME = Konta;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71CF606FC66DF722C9754FD3 /* Build configuration list for PBXNativeTarget "Konta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A277869BA6DE1E43DFFDFE57 /* Debug */,
+				24F760FD23C30B494E82D653 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9730DA076295E942571B82E0 /* Build configuration list for PBXNativeTarget "KontaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD0C70BFCA72DA9392A6508F /* Debug */,
+				402C2E0DC81CC0C6998C6962 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B1F2F708A71315E53493CA82 /* Build configuration list for PBXProject "Konta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2864E76FF83F0C7551ECC692 /* Debug */,
+				B6F4F49B1566378EF71E3CBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8BABDC2BC4537064A3E4B2AD /* XCLocalSwiftPackageReference "../ios/KontaKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../ios/KontaKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E5E8294309364DC6623D3F9 /* KontaKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KontaKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B838CF9E4157274E7E4B1354 /* Project object */;
+}

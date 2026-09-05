@@ -1,0 +1,9 @@
+/vendor/
+/storage/*
+!/storage/.gitkeep
+/tmp/*
+/logs/*
+.env
+.env.*
+!.env.example
+/config/Migrations/schema-dump-*.lock

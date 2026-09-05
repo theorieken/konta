@@ -1,0 +1,296 @@
+[
+  {
+    "slug": "gehalt",
+    "name": "Gehalt",
+    "direction": "income",
+    "keywords": [
+      "lohn",
+      "gehalt",
+      "salär",
+      "bezüge",
+      "entgelt",
+      "sonderzahlung"
+    ]
+  },
+  {
+    "slug": "nebeneinkommen",
+    "name": "Nebeneinkommen",
+    "direction": "income",
+    "keywords": [
+      "honorar",
+      "freelance",
+      "nebentätigkeit",
+      "auftrag"
+    ]
+  },
+  {
+    "slug": "beteiligung",
+    "name": "Beteiligung",
+    "direction": "income",
+    "keywords": [
+      "secondary",
+      "anteil",
+      "beteiligung",
+      "dividende",
+      "ausschüttung"
+    ]
+  },
+  {
+    "slug": "erstattung",
+    "name": "Erstattung",
+    "direction": "income",
+    "keywords": [
+      "erstattung",
+      "rückerstattung",
+      "gutschrift",
+      "storno",
+      "kostenerstattung"
+    ]
+  },
+  {
+    "slug": "geschenk",
+    "name": "Geschenk",
+    "direction": "income",
+    "keywords": [
+      "geschenk",
+      "schenkung",
+      "zuwendung"
+    ]
+  },
+  {
+    "slug": "wohnen",
+    "name": "Wohnen",
+    "direction": "expense",
+    "keywords": [
+      "miete",
+      "nebenkosten",
+      "hausgeld",
+      "kaution",
+      "vermieter"
+    ]
+  },
+  {
+    "slug": "haushalt",
+    "name": "Haushalt",
+    "direction": "expense",
+    "keywords": [
+      "rewe",
+      "edeka",
+      "aldi",
+      "lidl",
+      "penny",
+      "netto",
+      "dm",
+      "rossmann",
+      "lebensmittel",
+      "supermarkt",
+      "drogerie"
+    ]
+  },
+  {
+    "slug": "energie",
+    "name": "Energie & Wasser",
+    "direction": "expense",
+    "keywords": [
+      "strom",
+      "gas",
+      "wasser",
+      "fernwärme",
+      "stadtwerke",
+      "vattenfall",
+      "eon"
+    ]
+  },
+  {
+    "slug": "versicherung",
+    "name": "Versicherung",
+    "direction": "expense",
+    "keywords": [
+      "versicherung",
+      "haftpflicht",
+      "hausrat",
+      "police",
+      "allianz",
+      "huk"
+    ]
+  },
+  {
+    "slug": "abos",
+    "name": "Abos & Mobilfunk",
+    "direction": "expense",
+    "keywords": [
+      "netflix",
+      "spotify",
+      "telekom",
+      "vodafone",
+      "o2",
+      "abo",
+      "mitgliedschaft",
+      "icloud",
+      "google one",
+      "internet"
+    ]
+  },
+  {
+    "slug": "mobilitaet",
+    "name": "Mobilität",
+    "direction": "expense",
+    "keywords": [
+      "tankstelle",
+      "aral",
+      "shell",
+      "hvv",
+      "deutschlandticket",
+      "bahn",
+      "adac",
+      "parken",
+      "werkstatt",
+      "kfz"
+    ]
+  },
+  {
+    "slug": "gesundheit",
+    "name": "Gesundheit",
+    "direction": "expense",
+    "keywords": [
+      "apotheke",
+      "arzt",
+      "zahnarzt",
+      "praxis",
+      "krankenkasse",
+      "brille"
+    ]
+  },
+  {
+    "slug": "steuern",
+    "name": "Steuern & Abgaben",
+    "direction": "expense",
+    "keywords": [
+      "finanzamt",
+      "steuer",
+      "einkommensteuer",
+      "vorauszahlung",
+      "rundfunkbeitrag"
+    ]
+  },
+  {
+    "slug": "freizeit",
+    "name": "Freizeit",
+    "direction": "expense",
+    "keywords": [
+      "restaurant",
+      "bar",
+      "kino",
+      "café",
+      "cafe",
+      "sport",
+      "fitness",
+      "konzert"
+    ]
+  },
+  {
+    "slug": "reisen",
+    "name": "Reisen",
+    "direction": "expense",
+    "keywords": [
+      "hotel",
+      "airbnb",
+      "flug",
+      "urlaub",
+      "booking",
+      "reise"
+    ]
+  },
+  {
+    "slug": "anschaffung",
+    "name": "Anschaffungen",
+    "direction": "expense",
+    "keywords": [
+      "möbel",
+      "ikea",
+      "elektronik",
+      "media markt",
+      "saturn",
+      "anschaffung"
+    ]
+  },
+  {
+    "slug": "bildung",
+    "name": "Bildung",
+    "direction": "expense",
+    "keywords": [
+      "kurs",
+      "seminar",
+      "buch",
+      "studium",
+      "fortbildung",
+      "semesterbeitrag"
+    ]
+  },
+  {
+    "slug": "familie",
+    "name": "Familie",
+    "direction": "expense",
+    "keywords": [
+      "hochzeit",
+      "kita",
+      "kind",
+      "geschenk",
+      "familie"
+    ]
+  },
+  {
+    "slug": "kredit",
+    "name": "Kredit & Zinsen",
+    "direction": "expense",
+    "keywords": [
+      "kredit",
+      "darlehen",
+      "rate",
+      "tilgung",
+      "zins",
+      "finanzierung"
+    ]
+  },
+  {
+    "slug": "gebuehren",
+    "name": "Gebühren",
+    "direction": "expense",
+    "keywords": [
+      "kontoführung",
+      "gebühr",
+      "entgelt",
+      "bankgebühr"
+    ]
+  },
+  {
+    "slug": "sparen",
+    "name": "Sparen & Anlage",
+    "direction": "both",
+    "keywords": [
+      "sparplan",
+      "depot",
+      "etf",
+      "tagesgeld",
+      "festgeld",
+      "rücklage"
+    ]
+  },
+  {
+    "slug": "umbuchung",
+    "name": "Umbuchung",
+    "direction": "both",
+    "keywords": [
+      "umbuchung",
+      "übertrag",
+      "eigenübertrag",
+      "interne buchung"
+    ]
+  },
+  {
+    "slug": "sonstiges",
+    "name": "Sonstiges",
+    "direction": "both",
+    "keywords": []
+  }
+]

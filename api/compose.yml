@@ -1,0 +1,18 @@
+services:
+  api:
+    build: .
+    ports:
+      - '${KONTA_PORT:-8765}:80'
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - konta-data:/var/www/konta/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'php', '-r', 'exit(@file_get_contents("http://localhost/health") === false ? 1 : 0);']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  konta-data:

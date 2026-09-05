@@ -1,0 +1,9 @@
+.env*
+vendor
+storage
+tmp
+logs
+tests
+docs
+.git
+.github

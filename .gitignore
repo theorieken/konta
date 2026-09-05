@@ -1,40 +1,26 @@
-# Environment
-.env
-.env.local
-*.env.bak
-
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-htmlcov/
-.coverage
-
-# Django
-media/
-staticfiles/
-db.sqlite3
-
-# Node / Next.js
-node_modules/
-.next/
-out/
-.turbo/
-*.tsbuildinfo
-npm-debug.log*
-yarn-error.log*
-
-# Editors / OS
+.DS_Store
 .idea/
 .vscode/
-.DS_Store
-Thumbs.db
-
-# Local scratch
-tmp/
-*.local
+.env
+.env.*
+!.env.example
+!*.local.xcconfig.example
+*.local.xcconfig
+*.p8
+*.p12
+*.mobileprovision
+*.provisionprofile
+*.xcuserstate
+xcuserdata/
+.build/
+DerivedData/
+*.xcarchive
+*.ipa
+api/vendor/
+api/storage/*
+!api/storage/.gitkeep
+api/tmp/*
+api/logs/*
+api/config/Migrations/schema-dump-*.lock
+api/.phpunit.cache/
+__pycache__/

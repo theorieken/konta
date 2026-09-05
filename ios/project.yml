@@ -1,0 +1,72 @@
+name: Konta
+options:
+  bundleIdPrefix: de.konta
+  deploymentTarget:
+    iOS: '26.0'
+configFiles:
+  Debug: Config/Shared.xcconfig
+  Release: Config/Shared.xcconfig
+packages:
+  KontaKit:
+    path: KontaKit
+targets:
+  Konta:
+    type: application
+    platform: iOS
+    sources:
+      - Konta
+    dependencies:
+      - package: KontaKit
+    settings:
+      base:
+        PRODUCT_NAME: Konta
+        TARGETED_DEVICE_FAMILY: '1,2'
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+      configs:
+        Debug:
+          CODE_SIGN_ENTITLEMENTS: Konta/Debug.entitlements
+        Release:
+          CODE_SIGN_ENTITLEMENTS: Konta/Release.entitlements
+    info:
+      path: Konta/Info.plist
+      properties:
+        CFBundleDisplayName: Konta
+        CFBundleDevelopmentRegion: de
+        CFBundleLocalizations: [de]
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UIBackgroundModes: [remote-notification]
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        KontaAPIURL: $(KONTA_API_URL)
+        CFBundleURLTypes:
+          - CFBundleURLName: Konta Einladungen
+            CFBundleURLSchemes: [konta]
+  KontaUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [KontaUITests]
+    dependencies:
+      - target: Konta
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        PRODUCT_BUNDLE_IDENTIFIER: de.konta.app.uitests
+        SWIFT_VERSION: 6.0
+schemes:
+  Konta:
+    build:
+      targets:
+        Konta: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [KontaUITests]
+    archive:
+      config: Release
