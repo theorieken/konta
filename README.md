@@ -72,7 +72,9 @@ Für Docker auf dem Host entsprechend `docker compose -f /pfad/zu/konta/api/comp
 2. Den Webserver-DocumentRoot **ausschließlich auf `api/webroot`** setzen; alle anderen Pfade auf `index.php` routen. `storage`, `.env`, `vendor` und `.p8` dürfen nicht öffentlich erreichbar sein.
 3. `.env.example` nach `.env` kopieren. HTTPS, SMTP und optional MySQL/OpenAI/APNs konfigurieren. `DB_DRIVER=mysql` nutzt die Datenbankparameter; ohne Konfiguration funktioniert SQLite.
 4. `storage`, `tmp`, `logs` für den PHP-Prozess schreibbar machen, `php bin/cake.php migrations migrate --no-lock` ausführen und den Wartungsjob einrichten.
-5. HTTPS-URL in `ios/Config/Signing.local.xcconfig` als `KONTA_API_URL` setzen. Backups von Datenbank und `storage/uploads` gemeinsam erstellen.
+5. Die produktive HTTPS-URL steht in `ios/Config/Shared.xcconfig`; lokale Abweichungen gehören in `Signing.local.xcconfig`. Backups von Datenbank und `storage/uploads` gemeinsam erstellen.
+
+Auf Shared Hosting kann die Domainwurzel auf dem Repository bleiben: Die Root-`.htaccess` leitet intern ausschließlich nach `api/webroot` weiter. `/` zeigt die minimale Vorschauseite, `/health` und `/v1/*` bleiben API-Endpunkte. Nach jedem `git pull` genügt `bash api/bin/deploy.sh`; die nicht versionierte `api/.env` bleibt dabei erhalten.
 
 SQLite eignet sich für eine einzelne API-Instanz; für mehrere Serverinstanzen MySQL und gemeinsam verfügbaren Dateispeicher verwenden. Die aktuell enthaltene Dateispeicherung ist lokal, ohne Redis, MinIO oder separate Worker.
 

@@ -1,9 +1,10 @@
-// Set your Apple team and permanent identifier in Signing.local.xcconfig.
-PRODUCT_BUNDLE_IDENTIFIER = de.konta.app
-DEVELOPMENT_TEAM =
+// Permanent App Store identity shared by the iOS and macOS apps.
+PRODUCT_BUNDLE_IDENTIFIER = de.groon.konta
+DEVELOPMENT_TEAM = 5XAJ947826
 CODE_SIGN_STYLE = Automatic
 MARKETING_VERSION = 1.0
 CURRENT_PROJECT_VERSION = 1
 SWIFT_VERSION = 6.0
-KONTA_API_URL =
+// Escape the URL separator because // starts an xcconfig comment.
+KONTA_API_URL = https:/$()/konta-finance.com
 #include? "Signing.local.xcconfig"

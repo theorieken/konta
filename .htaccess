@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Never make the repository layout addressable from the public URL.
+    RewriteCond %{THE_REQUEST} "\s/+api(?:[/\s?])" [NC]
+    RewriteRule ^api(?:/|$) - [F,L]
+
+    # The small root front controller exposes only the landing page assets and
+    # delegates every API request to CakePHP.
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "no-referrer"
+</IfModule>

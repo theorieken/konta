@@ -158,11 +158,11 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					013F332F8708A57E062A8DBC = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 5XAJ947826;
 						ProvisioningStyle = Automatic;
 					};
 					47A7FBA602D86475566B45A3 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 5XAJ947826;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 013F332F8708A57E062A8DBC;
 					};
@@ -322,7 +322,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.konta.app.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = de.groon.konta.uitests;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -414,7 +414,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.konta.app.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = de.groon.konta.uitests;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

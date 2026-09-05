@@ -2,9 +2,9 @@
 
 Nutze dein bestehendes Apple-Developer-Team. Für Konta legst du eine eigene App-ID und einen App-Store-Eintrag an. Die zugehörigen Entwicklungs- und Distributionsprofile kann Xcode automatisch verwalten. Eine zusätzliche Apple-ID ist dafür nicht nötig.
 
-## 1. Endgültige Kennung festlegen
+## 1. Endgültige Kennung
 
-Wähle eine dauerhafte Bundle-ID, zum Beispiel `de.deinefirma.konta`. Die im Projekt gesetzte `de.konta.app` ist ein Platzhalter. iOS und macOS verwenden dieselbe Kennung; Apple unterstützt eine App-ID über mehrere Plattformen. Prüfe den Namen „Konta“ vor der Veröffentlichung auf Verfügbarkeit. [Apple: App-ID registrieren](https://developer.apple.com/help/account/identifiers/register-an-app-id/)
+Die dauerhafte Bundle-ID ist `de.groon.konta`, das Apple-Team ist `5XAJ947826`. iOS und macOS verwenden dieselbe Kennung und denselben App-Store-Eintrag. Die produktive API liegt unter `https://konta-finance.com`. [Apple: App-ID registrieren](https://developer.apple.com/help/account/identifiers/register-an-app-id/)
 
 ## 2. App-ID im Developer-Portal anlegen
 
@@ -19,7 +19,7 @@ Die Kennung muss exakt mit beiden Xcode-Targets übereinstimmen. Die bestehenden
 
 1. Melde dich in **Xcode → Settings → Accounts** mit deinem Apple-Account an und wähle dein Team.
 2. Kopiere `ios/Config/Signing.local.xcconfig.example` nach `ios/Config/Signing.local.xcconfig`.
-3. Trage `DEVELOPMENT_TEAM`, `PRODUCT_BUNDLE_IDENTIFIER` und die produktive `KONTA_API_URL` ein. Beide Projekte lesen diese eine Datei; sie ist vom Git-Tracking ausgeschlossen.
+3. Die produktiven Werte stehen in `ios/Config/Shared.xcconfig`. `Signing.local.xcconfig` ist nur für abweichende lokale Werte nötig und vom Git-Tracking ausgeschlossen. Beide Projekte lesen diese Konfiguration.
 4. Öffne beide `.xcodeproj`-Dateien. Unter **Signing & Capabilities** muss **Automatically manage signing** aktiv sein und dein Team erscheinen.
 5. Starte zunächst auf deinem iPhone und auf dem Mac. Xcode erstellt die nötigen Profile für diese App-ID und Geräte.
 
@@ -57,4 +57,4 @@ Vor dem Upload ausfüllen und prüfen:
 - Screenshots von iPhone/iPad und Mac, Altersfreigabe, Export-Compliance-Angaben und Review-Notizen.
 - Ein funktionsfähiges Review-Konto, Zugriff auf die produktive API und eine Erklärung der Haushalts-/Einladungsfunktionen. Kontolöschung und Passwort-Reset testen.
 
-Die aktuellen Builds wurden lokal ohne Distributionssignierung geprüft. Es wurden noch keine Apple-App-Einträge angelegt, keine Profile im Portal erstellt und keine Builds hochgeladen. Deine privaten Apple-Schlüssel wurden nicht ausgelesen.
+Die App-ID `de.groon.konta` und der gemeinsame App-Store-Connect-Eintrag für iOS und macOS sind angelegt. Lokale, unsignierte Release-Builds prüfen weiterhin reproduzierbar Code und Assets; ein erfolgreicher Store-Upload bestätigt zusätzlich Zertifikate und Distributionsprofile. Private Apple-Schlüssel gehören weder in dieses Repository noch in Build-Protokolle.

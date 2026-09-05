@@ -53,7 +53,7 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: true
-        PRODUCT_BUNDLE_IDENTIFIER: de.konta.app.macos.uitests
+        PRODUCT_BUNDLE_IDENTIFIER: de.groon.konta.macos.uitests
         SWIFT_VERSION: 6.0
 schemes:
   Konta:

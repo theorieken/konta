@@ -1,4 +1,4 @@
-DEVELOPMENT_TEAM = YOUR_TEAM_ID
-PRODUCT_BUNDLE_IDENTIFIER = de.yourcompany.konta
-// Escape the URL separator because // starts an xcconfig comment.
-KONTA_API_URL = https:/$()/api.your-domain.de
+// Optional local overrides. Production defaults live in Shared.xcconfig.
+// DEVELOPMENT_TEAM = YOUR_TEAM_ID
+// PRODUCT_BUNDLE_IDENTIFIER = de.yourcompany.konta
+// KONTA_API_URL = https:/$()/api.your-domain.de

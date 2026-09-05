@@ -168,11 +168,11 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					013F332F8708A57E062A8DBC = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 5XAJ947826;
 						ProvisioningStyle = Automatic;
 					};
 					47A7FBA602D86475566B45A3 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 5XAJ947826;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 013F332F8708A57E062A8DBC;
 					};
@@ -333,7 +333,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.konta.app.macos.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = de.groon.konta.macos.uitests;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Konta;
@@ -425,7 +425,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.konta.app.macos.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = de.groon.konta.macos.uitests;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Konta;
