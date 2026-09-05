@@ -1,0 +1,31 @@
+# --- Core ---------------------------------------------------------------------
+Django==5.1.4
+djangorestframework==3.15.2
+django-filter==24.3
+django-cors-headers==4.6.0
+drf-spectacular==0.28.0
+
+# --- ASGI / WebSockets --------------------------------------------------------
+channels==4.2.0
+channels-redis==4.2.1
+daphne==4.1.2
+
+# --- Async work ---------------------------------------------------------------
+celery==5.4.0
+django-celery-beat==2.7.0
+redis==5.2.1
+
+# --- Data ---------------------------------------------------------------------
+psycopg[binary]==3.2.3
+python-dateutil==2.9.0.post0
+
+# --- Object storage (MinIO / S3) ---------------------------------------------
+django-storages==1.14.4
+boto3==1.35.76
+
+# --- AI classification --------------------------------------------------------
+openai==1.59.3
+
+# --- Utilities ----------------------------------------------------------------
+whitenoise==6.8.2
+charset-normalizer==3.4.0

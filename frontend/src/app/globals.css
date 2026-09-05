@@ -1,0 +1,26 @@
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  /* No `height: 100%` here on purpose – it breaks `position: sticky` for the
+     sidebar. The app shell sets its own `min-height: 100dvh`. */
+}
+
+a {
+  color: inherit;
+}
+
+/* Numbers must line up in every table and KPI tile. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recharts renders a focus outline on every hover – not useful here. */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
