@@ -43,6 +43,7 @@ final class Auth
         return $this->store->db->transactional(function () use ($email, $password, $name) {
             $id = Store::id();
             $this->store->db->insert('users', ['id' => $id, 'name' => $name, 'email' => $email, 'password_hash' => password_hash($password, PASSWORD_DEFAULT), 'verified' => false, 'created_at' => time()]);
+            (new Households($this->store))->create($id, 'Mein Haushalt');
             $this->emailToken($email, 'verify');
             return ['token' => $this->token($id), 'user' => self::user($this->store->row('SELECT * FROM users WHERE id = ?', [$id]))];
         });
@@ -62,7 +63,11 @@ final class Auth
         if (!$row || ($purpose === 'verify' && $row['verified'])) { return; }
         $token = $this->token($row['id'], $purpose);
         $title = $purpose === 'verify' ? 'E-Mail-Adresse bestätigen' : 'Passwort zurücksetzen';
-        (new Delivery($this->store))->email($email, $title, "Öffne Konta und gib diesen Code unter „{$title}“ ein. Er gilt eine Stunde.\n\n{$token}\n\nDu hast nichts angefordert? Ignoriere diese E-Mail.");
+        $intro = $purpose === 'verify'
+            ? "Hallo {$row['name']},\n\nschön, dass du bei Konta bist. Bestätige jetzt deine E-Mail-Adresse."
+            : "Hallo {$row['name']},\n\ndu möchtest dein Konta-Passwort zurücksetzen.";
+        $body = "{$intro}\n\nDein persönlicher Code (eine Stunde gültig):\n{$token}\n\nÖffne Konta über den Button und gib den Code dort ein. Du hast nichts angefordert? Dann kannst du diese E-Mail ignorieren.";
+        (new Delivery($this->store))->email($email, $title, $body, 'Konta öffnen', $purpose === 'verify' ? 'konta://verify' : 'konta://reset');
     }
     public function redeem(string $token, string $purpose, ?string $password = null): void
     {

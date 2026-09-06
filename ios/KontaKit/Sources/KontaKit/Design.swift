@@ -1,9 +1,14 @@
 import SwiftUI
 
 enum KontaStyle {
-    static let accent = Color(red: 0.42, green: 0.34, blue: 0.87)
+    static let accent = Color(red: 0.02, green: 0.42, blue: 0.95)
     static let income = Color(red: 0.10, green: 0.48, blue: 0.34)
     static let expense = Color(red: 0.76, green: 0.27, blue: 0.28)
+    #if os(macOS)
+    static let canvas = Color(nsColor: .windowBackgroundColor)
+    #else
+    static let canvas = Color(uiColor: .systemGroupedBackground)
+    #endif
 }
 struct Money: View {
     var cents: Int64
@@ -13,15 +18,18 @@ struct Money: View {
             .foregroundStyle(colored ? (cents >= 0 ? KontaStyle.income : KontaStyle.expense) : .primary)
     }
 }
-struct KontaMark: View {
-    var size: CGFloat = 54
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: size * 0.28).fill(KontaStyle.accent.gradient)
-            Image(systemName: "chart.xyaxis.line").font(.system(size: size * 0.48, weight: .semibold)).foregroundStyle(.white)
-            Image(systemName: "sparkle").font(.system(size: size * 0.21, weight: .semibold)).foregroundStyle(.white.opacity(0.9)).offset(x: size * 0.23, y: -size * 0.24)
-        }.frame(width: size, height: size).accessibilityHidden(true)
+private struct KontaCardModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(.quaternary, lineWidth: 1)
+            }
     }
+}
+extension View {
+    func kontaCard() -> some View { modifier(KontaCardModifier()) }
 }
 struct Panel<Content: View>: View {
     var title: String
@@ -31,8 +39,7 @@ struct Panel<Content: View>: View {
             Text(title).font(.headline)
             content
         }.padding(22).frame(maxWidth: .infinity, alignment: .leading)
-            .background(.background, in: RoundedRectangle(cornerRadius: 22))
-            .overlay(RoundedRectangle(cornerRadius: 22).stroke(.quaternary, lineWidth: 1))
+            .kontaCard()
     }
 }
 struct RecordRow: View {

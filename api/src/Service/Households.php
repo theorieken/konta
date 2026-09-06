@@ -51,9 +51,17 @@ final class Households
             $delivery = new Delivery($this->store);
             if ($existing) {
                 $delivery->notify($existing['id'], ['title' => 'Einladung zu Konta', 'body' => 'Du wurdest zu einem Haushalt eingeladen. Öffne Konta, um die Einladung anzusehen.', 'householdID' => $household, 'invitationID' => $id]);
-            } else {
-                $delivery->email($email, 'Du bist zu Konta eingeladen', $user['name'] . " lädt dich zum Haushalt „{$name}“ ein.\n\nÖffne Konta, erstelle ein Konto mit dieser E-Mail-Adresse und bestätige sie. Deine Einladung erscheint dann unter „Haushalte“. Sie gilt sieben Tage.\n\nApp öffnen: konta://invitations/{$id}");
             }
+            $instruction = $existing
+                ? 'Öffne Konta und nimm die Einladung in den Einstellungen an.'
+                : 'Erstelle zuerst ein Konta-Konto mit dieser E-Mail-Adresse und bestätige sie. Anschließend kannst du die Einladung in den Einstellungen annehmen.';
+            $delivery->email(
+                $email,
+                'Gemeinsam planen mit Konta',
+                $user['name'] . " lädt dich in den Haushalt „{$name}“ ein.\n\n{$instruction}\n\nDie Einladung ist sieben Tage gültig.",
+                'Einladung in Konta öffnen',
+                'konta://invitations'
+            );
             return $this->invitation($this->store->row('SELECT i.*, h.name AS household_name FROM invitations i JOIN households h ON h.id = i.household_id WHERE i.id = ?', [$id]));
         });
     }

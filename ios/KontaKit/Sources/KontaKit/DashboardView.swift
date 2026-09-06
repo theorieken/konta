@@ -33,7 +33,7 @@ struct DashboardView: View {
                 }
                 categories
             }.padding(24).frame(maxWidth: 1200).frame(maxWidth: .infinity)
-        }.background(.quaternary.opacity(0.22))
+        }.background(KontaStyle.canvas)
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
@@ -78,7 +78,7 @@ struct DashboardView: View {
             Money(cents: value).font(.system(.title, design: .rounded, weight: .semibold)).minimumScaleFactor(0.6).lineLimit(1)
             Text(caption).font(.caption).foregroundStyle(.secondary)
         }.padding(20).frame(minWidth: 200, maxWidth: .infinity, alignment: .leading)
-            .background(.background, in: RoundedRectangle(cornerRadius: 20)).overlay(RoundedRectangle(cornerRadius: 20).stroke(.quaternary, lineWidth: 1))
+            .kontaCard()
     }
     private var projection: some View {
         Panel(title: "So entwickelt sich euer Vermögen") {
@@ -107,7 +107,7 @@ struct DashboardView: View {
     private var accounts: some View {
         Panel(title: "Eure Konten") {
             let records = store.records.filter { $0.kind == .account }
-            if records.isEmpty { Text("Lege unter Haushalt dein erstes Konto an.").foregroundStyle(.secondary) }
+            if records.isEmpty { Text("Lege unter Konten dein erstes Konto an.").foregroundStyle(.secondary) }
             ForEach(records) { account in
                 Button { selected = account } label: {
                     HStack(spacing: 12) {
@@ -137,7 +137,7 @@ struct DashboardView: View {
             } else {
                 Image(systemName: "scope").font(.largeTitle).foregroundStyle(KontaStyle.accent)
                 Text("Was habt ihr vor?").font(.title3.weight(.semibold))
-                Text("Legt in den Einstellungen ein Sparziel fest. Konta zeigt, ob euer Plan dafür reicht.").font(.subheadline).foregroundStyle(.secondary)
+                Text("Legt unter Sparziele fest, was ihr erreichen möchtet. Konta zeigt, ob euer Plan dafür reicht.").font(.subheadline).foregroundStyle(.secondary)
             }
         }
     }

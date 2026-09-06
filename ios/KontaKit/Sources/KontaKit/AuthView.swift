@@ -11,7 +11,6 @@ struct AuthView: View {
         @Bindable var store = store
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
-                KontaMark(size: 70)
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Dein Geld.\nEin guter Plan.").font(.system(.largeTitle, design: .rounded, weight: .bold))
                     Text("Mehr Überblick. Mehr Möglichkeiten.\nFinanzen, die ihr gemeinsam versteht.").foregroundStyle(.secondary)
@@ -41,7 +40,20 @@ struct AuthView: View {
                 }.font(.subheadline)
                 Button { store.startDemo() } label: { Label("Konta kennenlernen", systemImage: "play.circle") }.frame(maxWidth: .infinity)
             }.padding(32).frame(maxWidth: 460).frame(maxWidth: .infinity)
-        }.sheet(isPresented: $showReset) { NavigationStack { PasswordResetView() }.frame(idealWidth: 450, idealHeight: 480) }
+        }
+        .onAppear {
+            if store.pendingPasswordReset {
+                showReset = true
+                store.pendingPasswordReset = false
+            }
+        }
+        .onChange(of: store.pendingPasswordReset) { _, requested in
+            if requested {
+                showReset = true
+                store.pendingPasswordReset = false
+            }
+        }
+        .sheet(isPresented: $showReset) { NavigationStack { PasswordResetView() }.frame(idealWidth: 450, idealHeight: 480) }
     }
 }
 struct PasswordResetView: View {

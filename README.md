@@ -56,7 +56,7 @@ SQLite und hochgeladene Dateien liegen dann im persistenten Volume `konta-data`.
 
 Eine Einladung gibt noch keinen Datenzugriff. Beide Seiten müssen ihre E-Mail-Adresse bestätigen. Existierende Nutzer erhalten eine gespeicherte Mitteilung und eine APNs-Zustellung an registrierte Geräte. Neue Nutzer erhalten eine E-Mail; nach Registrierung mit derselben Adresse erscheint die Einladung automatisch. Einladungen gelten sieben Tage.
 
-Lokal legt der Mailtransport private `.eml`-Dateien in `api/storage/mail` ab. Dort steht auch der Bestätigungscode für lokale Testkonten. Für echte Zustellung `MAIL_TRANSPORT=smtp` und SMTP-Daten in `api/.env` setzen. APNs benötigt einen `.p8`-Schlüssel und die Team-/Key-/Bundle-ID, siehe [Apple-Einrichtung](APPLE_SETUP.md).
+Lokal legt der Mailtransport private `.eml`-Dateien in `api/storage/mail` ab. Dort steht auch der Bestätigungscode für lokale Testkonten. Für echte Zustellung `MAIL_TRANSPORT=smtp` und SMTP-Daten in `api/.env` setzen; `MAIL_FROM_NAME` bestimmt den sichtbaren Absendernamen. Konta versendet responsive HTML-E-Mails mit Textalternative und Outlook-kompatiblen Aktionsbuttons. APNs benötigt einen `.p8`-Schlüssel und die Team-/Key-/Bundle-ID, siehe [Apple-Einrichtung](APPLE_SETUP.md).
 
 Die Zustellung verwendet eine persistente Outbox mit Wiederholungen. Nach relevanten HTTP-Anfragen wird sie sofort verarbeitet. Richte für zuverlässige Wiederholungen und Bereinigung zusätzlich den Wartungsjob ein:
 

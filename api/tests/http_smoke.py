@@ -38,6 +38,9 @@ with tempfile.TemporaryDirectory(prefix='konta-test-http-') as temp:
         owner = request('/v1/auth/register', 'POST', {'name':'Alex', 'email':email,'password':'test-password-12345'}, expected=201)
         token = owner['token']
         assert 'password' not in owner['user']
+        initial = request('/v1/bootstrap', token=token)
+        assert len(initial['households']) == 1 and initial['households'][0]['name'] == 'Mein Haushalt'
+        initial_household_id = initial['households'][0]['id']
         request('/v1/auth/login', 'POST', {'email':email, 'password':'incorrect'}, expected=401)
         request('/v1/auth/login', 'POST', {'email':email, 'password':'test-password-12345'})
         household = request('/v1/households', 'POST', {'name':'Vertragstest'}, token, expected=201)
@@ -61,6 +64,10 @@ with tempfile.TemporaryDirectory(prefix='konta-test-http-') as temp:
                 if path in existing_mail: continue
                 contents = path.read_text()
                 if f'To: {address}\n' in contents:
+                    assert 'Content-Type: multipart/alternative' in contents
+                    assert 'Content-Type: text/plain' in contents
+                    assert 'Content-Type: text/html' in contents
+                    assert 'mso-padding-alt:' in contents
                     code = re.search(r'\b[a-f0-9]{64}\b', contents).group()
                     request('/v1/auth/verify', 'POST', {'code':code})
                     request('/v1/auth/verify', 'POST', {'code':code}, expected=422)
@@ -88,6 +95,7 @@ with tempfile.TemporaryDirectory(prefix='konta-test-http-') as temp:
         request(f'/v1/households/{h}/members/'+stranger['user']['id'], 'DELETE', {}, token)
         request(f'/v1/households/{h}/snapshot', token=stranger['token'], expected=403)
         request(f'/v1/households/{h}', 'DELETE', {'confirmation':'Vertragstest'}, token)
+        request(f'/v1/households/{initial_household_id}', 'DELETE', {'confirmation':'Mein Haushalt'}, token)
         request('/v1/me', 'DELETE', {'password':'test-password-12345'}, token)
         request('/v1/bootstrap', token=token, expected=401)
         print('HTTP smoke passed: support, auth, email verification, isolation, roles, invitations, CSV deduplication, conflicts, deletion, and Swift snapshot fixture.')

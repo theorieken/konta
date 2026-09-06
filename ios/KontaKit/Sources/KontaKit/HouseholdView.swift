@@ -3,7 +3,6 @@ import UniformTypeIdentifiers
 
 struct HouseholdView: View {
     @Environment(AppStore.self) private var store
-    @State private var newName = ""
     @State private var inviteEmail = ""
     @State private var code = ""
     @State private var transferMember: Member?
@@ -11,24 +10,6 @@ struct HouseholdView: View {
     var body: some View {
         List {
             if !store.demo && store.session?.user.verified == false { verification }
-            Section("Deine Haushalte") {
-                ForEach(store.households) { household in
-                    Button { Task { await store.selectHousehold(household.id) } } label: {
-                        HStack {
-                            Label(household.name, systemImage: "house")
-                            Spacer()
-                            if household.id == store.selectedHouseholdID { Image(systemName: "checkmark").foregroundStyle(KontaStyle.accent) }
-                        }.padding(.vertical, 4)
-                    }.buttonStyle(.plain)
-                }
-                if !store.demo {
-                    HStack {
-                        TextField("Neuer Haushalt", text: $newName)
-                        Button { Task { await store.perform { try await store.createHousehold(newName); newName = "" } } } label: { Image(systemName: "plus.circle.fill") }
-                            .accessibilityLabel("Haushalt erstellen").help("Haushalt erstellen").disabled(store.busy || newName.trimmingCharacters(in: .whitespaces).isEmpty || store.offline)
-                    }
-                }
-            }
             if !store.invitations.isEmpty {
                 Section("Einladungen für dich") {
                     ForEach(store.invitations) { invitation in
@@ -44,13 +25,7 @@ struct HouseholdView: View {
                 }
             }
             if store.household != nil {
-                Section("Finanzen verwalten") {
-                    NavigationLink { RecordListView(kind: .account) } label: { Label("Konten", systemImage: "building.columns") }
-                    NavigationLink { RecordListView(kind: .category) } label: { Label("Kategorien & Budgets", systemImage: "square.grid.2x2") }
-                    NavigationLink { ImportView() } label: { Label("CSV-Import", systemImage: "square.and.arrow.down") }
-                    NavigationLink { SettingsView() } label: { Label("Einstellungen", systemImage: "gearshape") }
-                }
-                Section("Gemeinsam planen") {
+                Section("Mitglieder") {
                     ForEach(store.snapshot?.members ?? []) { member in
                         HStack {
                             VStack(alignment: .leading, spacing: 3) { Text(member.name); Text(member.email).font(.caption).foregroundStyle(.secondary) }
@@ -82,8 +57,6 @@ struct HouseholdView: View {
                         }
                     }
                 }
-            } else {
-                Section { NavigationLink("Profil & Einstellungen") { SettingsView() } }
             }
             if !store.notifications.isEmpty {
                 Section("Mitteilungen") {
@@ -98,6 +71,7 @@ struct HouseholdView: View {
                 }
             }
         }.listStyle(.inset)
+            .navigationTitle(store.household?.name ?? "Mitglieder")
             .confirmationDialog("Haushaltsleitung übertragen?", isPresented: Binding(get: { transferMember != nil }, set: { if !$0 { transferMember = nil } }), titleVisibility: .visible) {
                 if let member = transferMember, let household = store.household {
                     Button("An \(member.name) übertragen") { Task { await store.perform { try await store.command("households/\(household.id)/transfer", body: ["userID": member.id]); transferMember = nil } } }

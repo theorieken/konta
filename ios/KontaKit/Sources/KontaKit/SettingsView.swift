@@ -5,9 +5,9 @@ public struct SettingsView: View {
     @Environment(AppStore.self) private var store
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
+    @State private var newHouseholdName = ""
+    @State private var addingHousehold = false
     @State private var householdName = ""
-    @State private var savingsGoal = ""
-    @State private var goalDate = Date()
     @State private var horizon = 24
     @State private var aiEnabled = false
     @State private var aiModel = "gpt-4.1-mini"
@@ -23,8 +23,26 @@ public struct SettingsView: View {
     public var body: some View {
         Form {
             profile
+            households
             if let household = store.household {
-                planning(household)
+                householdSettings(household)
+                Section("Verwalten") {
+                    NavigationLink {
+                        HouseholdView()
+                    } label: {
+                        Label("Mitglieder & Einladungen", systemImage: "person.2")
+                    }
+                    NavigationLink {
+                        RecordListView(kind: .category)
+                    } label: {
+                        Label("Kategorien & Budgets", systemImage: "square.grid.2x2")
+                    }
+                    NavigationLink {
+                        ImportView()
+                    } label: {
+                        Label("CSV-Import", systemImage: "square.and.arrow.down")
+                    }
+                }
                 intelligence(household)
                 Section("Daten") {
                     Button("Haushalt als JSON exportieren", systemImage: "square.and.arrow.up") {
@@ -56,9 +74,16 @@ public struct SettingsView: View {
             .onAppear {
                 name = store.session?.user.name ?? ""
                 if let household = store.household {
-                    householdName = household.name; savingsGoal = Euro.input(household.savingsGoal)
-                    goalDate = household.goalDate.map(Day.date) ?? Day.addingMonths(12, to: Date())
+                    householdName = household.name
                     horizon = household.horizon; aiEnabled = household.aiEnabled; aiModel = household.aiModel
+                }
+            }
+            .onChange(of: store.household?.id) { _, _ in
+                if let household = store.household {
+                    householdName = household.name
+                    horizon = household.horizon
+                    aiEnabled = household.aiEnabled
+                    aiModel = household.aiModel
                 }
             }
             .fileExporter(isPresented: $export, document: document, contentType: .json, defaultFilename: "Konta-\(Day.string(Date()))") { result in if case .failure(let error) = result { store.handle(error) } }
@@ -88,30 +113,88 @@ public struct SettingsView: View {
             } }.disabled(!store.canWrite)
         }
     }
-    private func planning(_ household: Household) -> some View {
-        Section("Euer Plan") {
+    private var households: some View {
+        Section("Haushalte") {
+            ForEach(store.households) { household in
+                Button {
+                    Task { await store.selectHousehold(household.id) }
+                } label: {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(household.name).foregroundStyle(.primary)
+                            Text(household.role == "owner" ? "Leitung" : "Mitglied")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        if household.id == store.selectedHouseholdID {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(KontaStyle.accent)
+                        }
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+            }
+            if !store.demo {
+                if addingHousehold {
+                    HStack {
+                        TextField("Name des Haushalts", text: $newHouseholdName)
+                            .textFieldStyle(.roundedBorder)
+                        Button("Hinzufügen") {
+                            Task {
+                                await store.perform {
+                                    try await store.createHousehold(newHouseholdName)
+                                    newHouseholdName = ""
+                                    addingHousehold = false
+                                }
+                            }
+                        }
+                        .disabled(newHouseholdName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !store.canWrite)
+                        Button("Abbrechen") {
+                            newHouseholdName = ""
+                            addingHousehold = false
+                        }
+                    }
+                } else {
+                    Button("Haushalt hinzufügen", systemImage: "plus") { addingHousehold = true }
+                        .disabled(store.offline)
+                }
+            }
+            if store.households.count > 1 {
+                Text("Der aktive Haushalt bestimmt, welche Finanzdaten gerade angezeigt werden.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+    private func householdSettings(_ household: Household) -> some View {
+        Section("Aktueller Haushalt") {
             TextField("Haushaltsname", text: $householdName)
-            TextField("Sparziel (€)", text: $savingsGoal)
-            DatePicker("Zieltermin", selection: $goalDate, displayedComponents: .date)
             Stepper("Planungshorizont: \(horizon) Monate", value: $horizon, in: 1...120)
-            BusyButton(title: "Plan speichern") { await store.perform {
-                guard let cents = Euro.parse(savingsGoal), cents >= 0 else { throw APIError(status: 0, message: "Bitte ein gültiges Sparziel eingeben.") }
-                var updated = household; updated.name = householdName; updated.savingsGoal = cents
-                updated.goalDate = Day.string(goalDate); updated.horizon = horizon
-                try await store.updateHousehold(updated); store.message = "Plan gespeichert."
+            BusyButton(title: "Haushalt speichern") { await store.perform {
+                var updated = household
+                updated.name = householdName.trimmingCharacters(in: .whitespacesAndNewlines)
+                updated.horizon = horizon
+                try await store.updateHousehold(updated)
+                store.message = "Haushalt gespeichert."
             } }
         }.disabled(!store.isOwner || !store.canWrite)
     }
     private func intelligence(_ household: Household) -> some View {
         Section {
-            Toggle("KI-Kategorisierung erlauben", isOn: $aiEnabled)
-            TextField("OpenAI-Modell", text: $aiModel)
-            Text("Mit deiner Freigabe werden Buchungstext, Gegenpartei und Betrag ausgewählter Buchungen an OpenAI übertragen. Kontonummern und IBAN-Felder werden nicht gesendet; im Buchungstext können persönliche Angaben enthalten sein. Der API-Schlüssel bleibt auf deinem Server.").font(.caption).foregroundStyle(.secondary)
-            BusyButton(title: "KI-Einstellungen speichern") { await store.perform {
-                var updated = household; updated.aiEnabled = aiEnabled; updated.aiModel = aiModel
-                try await store.updateHousehold(updated); store.message = "KI-Einstellungen gespeichert."
-            } }
-        } header: { Label("Konta KI", systemImage: "sparkles") }
+            DisclosureGroup("Optionale KI-Kategorisierung") {
+                Toggle("KI-Kategorisierung erlauben", isOn: $aiEnabled)
+                TextField("OpenAI-Modell", text: $aiModel)
+                Text("Nach deiner Freigabe können Buchungstext, Gegenpartei und Betrag ausgewählter Buchungen zur Kategorisierung übertragen werden. Kontonummern und IBAN-Felder werden nicht gesendet.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                BusyButton(title: "KI-Einstellungen speichern") { await store.perform {
+                    var updated = household; updated.aiEnabled = aiEnabled; updated.aiModel = aiModel
+                    try await store.updateHousehold(updated); store.message = "KI-Einstellungen gespeichert."
+                } }
+            }
+        } header: { Text("Automatisierung") }
             .disabled(!store.isOwner || !store.canWrite)
     }
     private var danger: some View {

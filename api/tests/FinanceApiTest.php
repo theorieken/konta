@@ -31,6 +31,28 @@ final class FinanceApiTest extends TestCase
         $this->expectException(ApiException::class); $this->expectExceptionCode(401);
         (new Auth($this->store))->authenticate('Bearer ' . $session['token']);
     }
+    public function testRegistrationStartsWithOneHousehold(): void
+    {
+        $session = $this->user();
+        $memberships = $this->store->rows('SELECT * FROM memberships WHERE user_id = ?', [$session['user']['id']]);
+        self::assertCount(1, $memberships);
+        self::assertSame('owner', $memberships[0]['role']);
+        self::assertSame('Mein Haushalt', $this->store->row('SELECT name FROM households WHERE id = ?', [$memberships[0]['household_id']])['name']);
+    }
+    public function testEmailHTMLHasOutlookSafeButtonAndEscapesContent(): void
+    {
+        $html = Delivery::emailHTML(
+            'Willkommen & los',
+            "Hallo <Theo>\n\nDein Code: 123",
+            'Konta öffnen',
+            'konta://verify'
+        );
+        self::assertStringContainsString('role="presentation"', $html);
+        self::assertStringContainsString('mso-padding-alt', $html);
+        self::assertStringContainsString('href="konta://verify"', $html);
+        self::assertStringContainsString('Hallo &lt;Theo&gt;', $html);
+        self::assertStringNotContainsString('Hallo <Theo>', $html);
+    }
     public function testCrossHouseholdAccountReferenceIsRejected(): void
     {
         $a = $this->user()['user']; $b = $this->user('sam@example.test')['user'];

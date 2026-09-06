@@ -20,7 +20,7 @@ public enum RecordKind: String, Codable, CaseIterable, Identifiable, Sendable {
         case .transaction: "Transaktionen"
         case .contract: "Verträge"
         case .loan: "Kredite"
-        case .job: "Einkommen"
+        case .job: "Jobs"
         }
     }
     public var symbol: String {

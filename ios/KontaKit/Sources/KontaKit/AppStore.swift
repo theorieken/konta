@@ -16,6 +16,7 @@ import Observation
     public var demo = false
     public var rangeStart = Day.monthStart(Date())
     public var rangeMonths = 12
+    public var pendingPasswordReset = false
     private var refreshGeneration = 0
     public var records: [FinanceRecord] { snapshot?.records ?? [] }
     public var household: Household? { snapshot?.household }

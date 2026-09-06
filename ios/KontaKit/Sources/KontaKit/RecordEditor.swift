@@ -45,9 +45,11 @@ struct RecordEditor: View {
                     TextField("Monatsbudget (€)", text: $budget)
                 }
             }
-            Section("Details") {
-                TextField("Tags · durch Komma getrennt", text: $tags)
-                TextField("Notizen", text: $record.notes, axis: .vertical).lineLimit(3...7)
+            Section {
+                DisclosureGroup("Weitere Details") {
+                    TextField("Tags · durch Komma getrennt", text: $tags)
+                    TextField("Notizen", text: $record.notes, axis: .vertical).lineLimit(3...7)
+                }
             }
             if let localError { Section { Text(localError).foregroundStyle(.secondary) } }
         }.formStyle(.grouped).navigationTitle(record.version == 0 ? "Neues " + record.kind.label : record.kind.label + " bearbeiten")
