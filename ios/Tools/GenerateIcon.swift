@@ -22,15 +22,15 @@ func render(size: Int, mac: Bool, name: String) throws {
     NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmap)
 
     let side = CGFloat(size)
-    NSColor.white.setFill()
+    (mac ? NSColor.clear : NSColor.white).setFill()
     NSRect(x: 0, y: 0, width: side, height: side).fill()
 
-    let inset = mac ? side * 0.075 : 0
+    let inset: CGFloat = 0
     let rect = NSRect(x: inset, y: inset, width: side - inset * 2, height: side - inset * 2)
     let background = NSBezierPath(
         roundedRect: rect,
-        xRadius: mac ? side * 0.20 : 0,
-        yRadius: mac ? side * 0.20 : 0
+        xRadius: mac ? side * 0.23 : 0,
+        yRadius: mac ? side * 0.23 : 0
     )
     NSGradient(
         colorsAndLocations:
