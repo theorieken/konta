@@ -1,0 +1,18 @@
+Konta bringt euren finanziellen Alltag und eure Pläne an einen Ort – nativ auf iPhone, iPad und Mac.
+
+BEHALTE DEN ÜBERBLICK
+Sieh euer Vermögen heute, den monatlichen Spielraum und die Entwicklung der kommenden Monate. Konta rechnet mit gebuchten Umsätzen, Startguthaben und geplanten Zahlungen – immer centgenau.
+
+PLANT GEMEINSAM
+Verwalte mehrere Haushalte, lade andere Personen ein und legt Sparziele fest. Rollen und Zugriffsrechte sorgen dafür, dass eure gemeinsamen Finanzdaten im richtigen Kreis bleiben.
+
+VERTRÄGE, EINKOMMEN UND KREDITE
+Regelmäßige Einnahmen und Ausgaben fließen automatisch in die Prognose ein. Einmalige geplante Buchungen lassen sich ebenso abbilden wie Verträge und Kreditraten.
+
+CSV-IMPORT UND KATEGORIEN
+Importiere Umsatzlisten deiner Bank. Konta erkennt typische CSV-Formate, überspringt Duplikate und respektiert deine manuell gewählten Kategorien. Eine optionale KI-Kategorisierung kann die noch offenen Buchungen unterstützen und muss von der Haushaltsleitung ausdrücklich aktiviert werden.
+
+FÜR APPLE GEMACHT
+Konta nutzt SwiftUI, Swift Charts, Schlüsselbund, native Navigation, Mitteilungen sowie systemweite Unterstützung für Dark Mode, Dynamic Type und VoiceOver. Der verschlüsselte Offline-Stand bleibt schreibgeschützt.
+
+Konta ist ein Werkzeug zur privaten Finanzplanung. Die App bietet keine Anlage-, Steuer- oder Rechtsberatung und stellt keine Verbindung zu Bankkonten her.

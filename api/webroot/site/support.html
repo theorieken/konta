@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a66f5">
+  <meta name="description" content="Hilfe, FAQ und Kontakt für Konta.">
+  <link rel="icon" href="/site/icon.png" type="image/png">
+  <link rel="stylesheet" href="/site/site.css?v=2">
+  <script src="/site/support.js?v=2" defer></script>
+  <title>Support – Konta</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><img src="/site/icon.png" alt=""><span>Konta</span></a>
+    <nav aria-label="Hauptnavigation"><a href="/">Start</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a></nav>
+  </header>
+  <main>
+    <section class="support-hero"><p class="eyebrow">KONTA SUPPORT</p><h1>Wie können wir helfen?</h1><p class="lead">Antworten auf die wichtigsten Fragen – oder eine Nachricht direkt an unser Team.</p></section>
+
+    <section class="section support-grid" id="faq">
+      <div><p class="eyebrow">SCHNELLE HILFE</p><h2>Häufige Fragen</h2><p>Bitte sende niemals Passwörter, Anmelde-Tokens oder vollständige Finanzdaten.</p></div>
+      <div class="faq-list">
+        <details open><summary>Wie starte ich den Vorschaumodus?</summary><p>Tippe auf dem Anmeldebildschirm auf „Konta kennenlernen“. Die Beispieldaten sind synthetisch und schreibgeschützt.</p></details>
+        <details><summary>Warum wurde meine Änderung nicht gespeichert?</summary><p>Konta überschreibt parallele Änderungen nicht still. Lade den Haushalt neu und übernimm deine Änderung anschließend noch einmal.</p></details>
+        <details><summary>Welche CSV-Dateien funktionieren?</summary><p>Konta erkennt typische deutsche Umsatzlisten mit Datum, Betrag sowie Buchungstext oder Verwendungszweck. Ungültige Zeilen weisen den gesamten Import zurück, damit keine unvollständigen Daten entstehen.</p></details>
+        <details><summary>Wie lösche oder exportiere ich meine Daten?</summary><p>Öffne „Haushalt → Einstellungen“. Dort kannst du Haushaltsdaten als JSON exportieren, dein Benutzerkonto löschen oder als Haushaltsleitung den gesamten Haushalt entfernen.</p></details>
+        <details><summary>Ich erhalte keine E-Mail. Was kann ich tun?</summary><p>Prüfe Spam-Ordner und Schreibweise der Adresse. Fordere den Code erst danach erneut an; zu viele direkte Anfragen werden zum Schutz deines Kontos begrenzt.</p></details>
+        <details><summary>Wie funktioniert die optionale KI-Kategorisierung?</summary><p>Die Haushaltsleitung muss sie ausdrücklich aktivieren. Manuelle Kategorien haben Vorrang und bleiben geschützt. Weitere Details stehen in den <a href="/datenschutz">Datenschutzhinweisen</a>.</p></details>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="kontakt">
+      <div><p class="eyebrow">KONTAKT</p><h2>Schreib uns.</h2><p>Wir melden uns unter der von dir angegebenen Adresse. Hilfreich sind App-Version, Gerät und der genaue Wortlaut einer Fehlermeldung.</p><p>Direkt per E-Mail: <a href="mailto:news@konta-finance.com">news@konta-finance.com</a></p></div>
+      <form class="contact-form" action="/v1/support/contact" method="post" data-support-form>
+        <div class="field-row"><label>Vor- und Nachname<input name="name" autocomplete="name" minlength="2" maxlength="100" required></label><label>E-Mail<input type="email" name="email" autocomplete="email" maxlength="254" required></label></div>
+        <label>Thema<select name="topic" required><option value="">Bitte auswählen</option><option value="allgemein">Allgemeine Frage</option><option value="konto">Konto und Anmeldung</option><option value="daten">Daten, Import und Synchronisierung</option><option value="datenschutz">Datenschutz und Löschung</option><option value="feedback">Feedback und Idee</option></select></label>
+        <label>Nachricht<textarea name="message" minlength="20" maxlength="4000" rows="7" required></textarea></label>
+        <label class="honey" aria-hidden="true">Firma<input name="company" tabindex="-1" autocomplete="off"></label>
+        <label class="consent"><input type="checkbox" required> Ich habe die <a href="/datenschutz">Datenschutzhinweise</a> gelesen.</label>
+        <button class="button primary" type="submit">Anfrage senden</button>
+        <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© 2026 GROON GmbH</span><a href="/">Startseite</a><a href="/datenschutz">Datenschutz</a><a href="/impressum">Impressum</a></footer>
+</body>
+</html>

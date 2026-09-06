@@ -4,6 +4,7 @@ use Cake\Routing\RouteBuilder;
 return function (RouteBuilder $routes): void {
     $routes->connect('/health', ['controller' => 'System', 'action' => 'health'])->setMethods(['GET']);
     $routes->scope('/v1', function (RouteBuilder $r): void {
+        $r->connect('/support/contact', ['controller' => 'Support', 'action' => 'contact'])->setMethods(['POST']);
         foreach (['register', 'login', 'forgot', 'reset', 'verify', 'resend', 'logout'] as $action) {
             $r->connect('/auth/' . $action, ['controller' => 'Auth', 'action' => $action])->setMethods(['POST']);
         }

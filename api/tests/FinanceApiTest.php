@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App\Test;
 use PHPUnit\Framework\TestCase;
-use App\Service\{Store, Auth, Households, Records, CsvParser, ApiException, ApplePush, Delivery, Imports};
+use App\Service\{Store, Auth, Households, Records, CsvParser, ApiException, ApplePush, Delivery, Imports, Support};
 
 final class FinanceApiTest extends TestCase
 {
@@ -138,6 +138,26 @@ final class FinanceApiTest extends TestCase
     public function testRateLimitIsEnforced(): void
     {
         $this->store->limit('test', 1); $this->expectException(ApiException::class); $this->expectExceptionCode(429); $this->store->limit('test', 1);
+    }
+    public function testSupportRequestIsValidatedAndQueued(): void
+    {
+        (new Support($this->store))->submit([
+            'name' => "Alex\nBeispiel",
+            'email' => 'alex@example.test',
+            'topic' => 'daten',
+            'message' => 'Beim CSV-Import erscheint eine verständliche Testmeldung.',
+        ]);
+        $mail = $this->store->row('SELECT * FROM outbox WHERE channel = ?', ['email']);
+        self::assertNotNull($mail);
+        self::assertSame('news@konta-finance.com', $mail['recipient']);
+        $payload = json_decode($mail['payload'], true, 512, JSON_THROW_ON_ERROR);
+        self::assertStringContainsString('Alex Beispiel', $payload['body']);
+        self::assertStringNotContainsString("Alex\nBeispiel", $payload['body']);
+    }
+    public function testSupportHoneypotDoesNotQueueMail(): void
+    {
+        (new Support($this->store))->submit(['company' => 'Spam GmbH']);
+        self::assertCount(0, $this->store->rows('SELECT * FROM outbox'));
     }
     public function testAppleSignatureIsJOSECompatible(): void
     {

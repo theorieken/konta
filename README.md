@@ -74,7 +74,7 @@ Für Docker auf dem Host entsprechend `docker compose -f /pfad/zu/konta/api/comp
 4. `storage`, `tmp`, `logs` für den PHP-Prozess schreibbar machen, `php bin/cake.php migrations migrate --no-lock` ausführen und den Wartungsjob einrichten.
 5. Die produktive HTTPS-URL steht in `ios/Config/Shared.xcconfig`; lokale Abweichungen gehören in `Signing.local.xcconfig`. Backups von Datenbank und `storage/uploads` gemeinsam erstellen.
 
-Auf Shared Hosting kann die Domainwurzel auf dem Repository bleiben: Die Root-`.htaccess` leitet intern ausschließlich nach `api/webroot` weiter. `/` zeigt die minimale Vorschauseite, `/health` und `/v1/*` bleiben API-Endpunkte. Nach jedem `git pull` genügt `bash api/bin/deploy.sh`; die nicht versionierte `api/.env` bleibt dabei erhalten.
+Auf Shared Hosting kann die Domainwurzel auf dem Repository bleiben: Die Root-`.htaccess` leitet intern ausschließlich nach `api/webroot` weiter. `/` zeigt die öffentliche Produktseite; `/support`, `/datenschutz` und `/impressum` liefern die zugehörigen Serviceseiten. `/health` und `/v1/*` bleiben API-Endpunkte. Nach jedem `git pull` genügt `bash api/bin/deploy.sh`; die nicht versionierte `api/.env` bleibt dabei erhalten.
 
 SQLite eignet sich für eine einzelne API-Instanz; für mehrere Serverinstanzen MySQL und gemeinsam verfügbaren Dateispeicher verwenden. Die aktuell enthaltene Dateispeicherung ist lokal, ohne Redis, MinIO oder separate Worker.
 
@@ -96,10 +96,10 @@ Die Finanzberechnung wurde zusätzlich über alle 24 Monate der vorhandenen Exce
 
 Beide Xcode-Schemes enthalten einen nativen Oberflächentest für Navigation und die schreibgeschützte Vorschau. Mit konfiguriertem Team lassen sie sich über **Product → Test** starten; für iOS ein Simulatorgerät auswählen.
 
-Lokaler Prüfstand: 19 API-Tests, 12 Swift-Tests, HTTP-Integrationstest und iPhone-Navigationstest bestanden; beide Release-Builds erfolgreich. Der Mac-Klicktest konnte auf diesem Rechner wegen eines Timeouts beim Aktivieren des macOS-Automationsmodus nicht starten.
+Lokaler Prüfstand: 21 API-Tests, 12 Swift-Tests, HTTP-Integrationstest sowie die nativen iPhone-, iPad- und Mac-Oberflächentests bestanden; beide Release-Builds erfolgreich.
 
 ## Veröffentlichung
 
 Die Projekte enthalten App-Icons, Privacy Manifest, APNs-Entitlements, Mac-Sandbox und Release-Konfigurationen. Eine erfolgreiche lokale Kompilierung ist noch keine signierte App-Store-Version. [APPLE_SETUP.md](APPLE_SETUP.md) führt durch App-ID, automatische Profile, APNs, App Store Connect und TestFlight. Für den Store müssen die endgültige Bundle-ID, das Apple-Team, die produktive API, Datenschutz-/Support-URLs, Screenshots und Review-Angaben eingerichtet und reale SMTP-/APNs-/KI-Verbindungen geprüft werden.
 
-**Konta** ist der vorläufige Produktname; die Verfügbarkeit in App Store Connect und als Marke ist noch nicht geprüft. Die vorhandene Referenzdatei liegt unter `api/docs/reference.xlsx`. Der alte Django-/Next.js-Stack wurde entfernt; dieses Projekt übernimmt keine alten Datenbanken automatisch.
+**Konta** ist in App Store Connect unter der Bundle-ID `de.groon.konta` eingerichtet. Store-Texte, Icon und die ausschließlich synthetischen, schreibgeschützten Demo-Screenshots liegen reproduzierbar unter `app/`. Die vorhandene Referenzdatei liegt unter `api/docs/reference.xlsx`. Der alte Django-/Next.js-Stack wurde entfernt; dieses Projekt übernimmt keine alten Datenbanken automatisch.

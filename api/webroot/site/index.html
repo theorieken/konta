@@ -3,28 +3,66 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#6d28d9">
-  <meta name="description" content="Konta – native Finanzplanung für iPhone, iPad und Mac.">
+  <meta name="theme-color" content="#0a66f5">
+  <meta name="description" content="Konta bringt Konten, Buchungen, Verträge und Finanzpläne für euren Haushalt an einen Ort – nativ auf iPhone, iPad und Mac.">
   <link rel="icon" href="/site/icon.png" type="image/png">
-  <title>Konta – Bald verfügbar</title>
-  <style>
-    :root { color-scheme: light dark; font-family: ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Rounded", sans-serif; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 2rem; background: #f7f5fb; color: #17131f; }
-    main { width: min(34rem, 100%); }
-    .mark { width: 4.5rem; height: 4.5rem; display: block; border-radius: 1.15rem; }
-    h1 { margin: 2rem 0 1rem; font-size: clamp(2.8rem, 9vw, 5.6rem); line-height: .95; letter-spacing: -.055em; }
-    p { max-width: 28rem; margin: 0; color: #686171; font-size: 1.05rem; line-height: 1.55; }
-    footer { margin-top: 4rem; color: #8c8495; font-size: .8rem; }
-    @media (prefers-color-scheme: dark) { body { background: #100d15; color: #f7f2ff; } p { color: #aaa2b5; } }
-  </style>
+  <link rel="stylesheet" href="/site/site.css?v=2">
+  <title>Konta – Finanzen gemeinsam planen</title>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="/"><img src="/site/icon.png" alt=""><span>Konta</span></a>
+    <nav aria-label="Hauptnavigation"><a href="#funktionen">Funktionen</a><a href="#sicherheit">Sicherheit</a><a href="#fragen">FAQ</a><a href="/support">Support</a></nav>
+  </header>
+
   <main>
-    <img class="mark" src="/site/icon.png" alt="Konta">
-    <h1>Dein Geld.<br>Ein guter Plan.</h1>
-    <p>Konta kommt bald auf iPhone, iPad und Mac.</p>
-    <footer>© 2026 GROON GmbH</footer>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="pill">Für iPhone, iPad und Mac</p>
+        <h1>Finanzen, die ihr gemeinsam versteht.</h1>
+        <p class="lead">Konta zeigt, was heute da ist und was morgen möglich wird. Plant Haushalte, Verträge und Sparziele gemeinsam – übersichtlich, nativ und centgenau.</p>
+        <div class="actions"><a class="button primary" href="https://apps.apple.com/app/id6809015231">Im App Store ansehen</a><a class="button secondary" href="#funktionen">Konta entdecken</a></div>
+        <p class="quiet">Keine Bank-Passwörter. Keine Werbung. Kein appübergreifendes Tracking.</p>
+      </div>
+      <div class="hero-visual" aria-label="Konta App mit Beispieldaten">
+        <div class="glow"></div>
+        <div class="phone"><img src="/site/app-preview.webp" alt="Konta Übersicht mit synthetischen Beispieldaten" width="620" height="1342"></div>
+        <div class="floating-card future"><span>Prognose</span><strong>67.563,51 €</strong><small>inklusive geplanter Zahlungen</small></div>
+        <div class="floating-card room"><span>Spielraum</span><strong>4.239,75 €</strong><small>pro Monat</small></div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Konta Eigenschaften"><span>Centgenaue Berechnung</span><span>Gemeinsame Haushalte</span><span>Native Apple-App</span><span>Lesbare Prognosen</span></section>
+
+    <section class="section" id="funktionen">
+      <div class="section-heading"><p class="eyebrow">ALLES AN EINEM ORT</p><h2>Euer Alltag. Euer Plan. Eine klare Ansicht.</h2><p>Konta kombiniert die Zahlen von heute mit euren regelmäßigen Zahlungen und Zielen – ohne euch mit Tabellen allein zu lassen.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card accent-card"><span class="feature-icon">↗</span><h3>Zukunft sehen</h3><p>Erkennt früh, wie sich Vermögen, Fixkosten und monatlicher Spielraum entwickeln.</p><div class="mini-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b></b></div></article>
+        <article class="feature-card"><span class="feature-icon">⌂</span><h3>Gemeinsam planen</h3><p>Mehrere Haushalte, Einladungen und klare Rollen bringen alle Beteiligten auf denselben Stand.</p><div class="avatar-row" aria-hidden="true"><span>TR</span><span>FM</span><span>+</span></div></article>
+        <article class="feature-card"><span class="feature-icon">↓</span><h3>Buchungen importieren</h3><p>CSV-Umsätze einlesen, Duplikate vermeiden und manuelle Kategorien zuverlässig behalten.</p><div class="tag-row" aria-hidden="true"><span>Wohnen</span><span>Mobilität</span><span>Freizeit</span></div></article>
+        <article class="feature-card dark-card"><span class="feature-icon">◌</span><h3>Regelmäßiges im Blick</h3><p>Verträge, Einkommen, Kredite und einmalige Pläne fließen automatisch in die Vorschau ein.</p><ul class="compact-list"><li>Miete <strong>−1.280 €</strong></li><li>Gehalt <strong>+4.850 €</strong></li><li>Sparziel <strong>750 €</strong></li></ul></article>
+      </div>
+    </section>
+
+    <section class="section split" id="sicherheit">
+      <div><p class="eyebrow">EURE DATEN</p><h2>Privat bleibt privat.</h2><p class="lead-sm">Konta speichert Zugangsdaten im Apple-Schlüsselbund, überträgt Produktionsdaten nur per HTTPS und prüft Berechtigungen für jeden Haushalt.</p></div>
+      <div class="security-list"><article><span>01</span><div><h3>Kein Tracking</h3><p>Keine Werbung und kein appübergreifendes Nutzerprofil.</p></div></article><article><span>02</span><div><h3>Bewusste Kontrolle</h3><p>KI-Kategorisierung ist optional und muss ausdrücklich aktiviert werden.</p></div></article><article><span>03</span><div><h3>Keine Bank-Zugangsdaten</h3><p>Umsätze werden nur aus einer bewusst ausgewählten CSV-Datei importiert.</p></div></article></div>
+    </section>
+
+    <section class="section faq" id="fragen">
+      <div class="section-heading"><p class="eyebrow">HÄUFIGE FRAGEN</p><h2>Kurz erklärt.</h2></div>
+      <div class="faq-list">
+        <details><summary>Wofür kann ich Konta nutzen?</summary><p>Für gemeinsame Haushaltsplanung, Konten, Buchungen, Verträge, Einkommen, Kredite, Budgets, Sparziele und Finanzprognosen.</p></details>
+        <details><summary>Verbindet Konta meine Bankkonten?</summary><p>Nein. Konta fragt keine Bank-Zugangsdaten ab. Du kannst Umsatzlisten deiner Bank bewusst als CSV-Datei importieren.</p></details>
+        <details><summary>Sind die Beispieldaten echte Finanzdaten?</summary><p>Nein. Der Vorschaumodus und alle Abbildungen verwenden ausschließlich synthetische, klar gekennzeichnete Beispieldaten.</p></details>
+        <details><summary>Kann ich Konta gemeinsam nutzen?</summary><p>Ja. Einladungen werden erst nach bestätigter E-Mail-Adresse und ausdrücklicher Annahme wirksam. Die Haushaltsleitung verwaltet Rollen und Einstellungen.</p></details>
+        <details><summary>Wo kann ich meine Daten löschen?</summary><p>In der App unter „Haushalt → Einstellungen“. Dort stehen auch der JSON-Export und die Kontolöschung bereit.</p></details>
+      </div>
+    </section>
+
+    <section class="final-cta"><img src="/site/icon.png" alt="Konta" width="96" height="96"><p class="eyebrow">IM APP STORE</p><h2>Platz für eure Zukunft.</h2><p>Konta für iPhone, iPad und Mac.</p><a class="button light" href="https://apps.apple.com/app/id6809015231">Konta laden</a></section>
   </main>
+
+  <footer class="site-footer"><span>© 2026 GROON GmbH</span><a href="/support">Support</a><a href="/datenschutz">Datenschutz</a><a href="/impressum">Impressum</a></footer>
 </body>
 </html>

@@ -1,0 +1,3 @@
+Konta benötigt ein Konto für schreibbare Daten. Für die Prüfung ohne Zugangsdaten kann auf dem Anmeldebildschirm „Konta kennenlernen“ gewählt werden. Dieser klar gekennzeichnete, schreibgeschützte Vorschaumodus enthält ausschließlich synthetische Beispieldaten und zeigt Übersicht, Buchungen, regelmäßige Zahlungen, Konten und Einstellungen.
+
+Die optionale KI-Kategorisierung ist standardmäßig deaktiviert und im Vorschaumodus nicht verfügbar. Konta stellt keine direkte Bankverbindung her. CSV-Dateien werden ausschließlich nach einer bewussten Auswahl durch die prüfende Person importiert.

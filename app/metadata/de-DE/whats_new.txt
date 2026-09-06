@@ -1,0 +1,1 @@
+Erste Version von Konta: gemeinsame Haushalte, Konten, Buchungen, Verträge, Kredite, Budgets, Sparziele, Prognosen und CSV-Import – nativ für iPhone, iPad und Mac.

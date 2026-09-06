@@ -30,6 +30,10 @@ with tempfile.TemporaryDirectory(prefix='konta-test-http-') as temp:
             except urllib.error.URLError: time.sleep(.1)
         request('/v1/bootstrap', expected=401)
         suffix = uuid.uuid4().hex[:8]
+        support_email = f'native-smoke-support-{suffix}@example.test'
+        request('/v1/support/contact', 'POST', {'name':'Alex Beispiel', 'email':support_email, 'topic':'daten', 'message':'Mein CSV-Import zeigt eine synthetische Testmeldung.'}, expected=202)
+        request('/v1/support/contact', 'POST', {'name':'A', 'email':'invalid', 'topic':'other', 'message':'kurz'}, expected=422)
+        assert any(support_email in path.read_text() for path in (root/'storage/mail').glob('*.eml') if path not in existing_mail)
         email = f'native-smoke-owner-{suffix}@example.test'
         owner = request('/v1/auth/register', 'POST', {'name':'Alex', 'email':email,'password':'test-password-12345'}, expected=201)
         token = owner['token']
@@ -86,7 +90,7 @@ with tempfile.TemporaryDirectory(prefix='konta-test-http-') as temp:
         request(f'/v1/households/{h}', 'DELETE', {'confirmation':'Vertragstest'}, token)
         request('/v1/me', 'DELETE', {'password':'test-password-12345'}, token)
         request('/v1/bootstrap', token=token, expected=401)
-        print('HTTP smoke passed: auth, email verification, isolation, roles, invitations, CSV deduplication, conflicts, deletion, and Swift snapshot fixture.')
+        print('HTTP smoke passed: support, auth, email verification, isolation, roles, invitations, CSV deduplication, conflicts, deletion, and Swift snapshot fixture.')
     except Exception:
         log.flush(); log.seek(0); print(log.read()[-3000:], file=sys.stderr); raise
     finally:
